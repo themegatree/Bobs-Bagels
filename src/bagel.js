@@ -3,7 +3,7 @@ class Bagel {
         this._name = name;
     }
 
-    name() {
+    get name() {
         return this._name;
     }
 }

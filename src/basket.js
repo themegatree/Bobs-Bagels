@@ -5,20 +5,20 @@ class Basket {
         this._itemList = [];
     }
 
-    capacity() {
+    get capacity() {
         return this._capacity;
     }
 
-    maxCapacity () {
+    get maxCapacity () {
         return this._maxCapacity;
     }
 
-    itemList () {
+    get itemList () {
         return this._itemList;
     }
 
     isFull () {
-        if (this.capacity === this.maxCapacity) {
+        if (this._capacity === this._maxCapacity) {
             return true;
         }
         else {
@@ -27,16 +27,25 @@ class Basket {
     }
 
     addItem(item) {
-        if (this.capacity < this.maxCapacity){
-            this.itemList += item;
+        if (this._capacity < this._maxCapacity){
+            this._itemList.push(item);
         }
         else {
-            console.log('Basket is Full')
+            console.log('Basket is Full');
+        }
+    }
+
+    removeItem(item) {
+        let index = this._itemList.indexOf(item);
+        if (index > -1) {
+            this._itemList.splice(index, 1)
         }
     }
 
     
 
 }
+
+let myBasket = new Basket(10);
 
 module.exports = Basket;

@@ -1,6 +1,7 @@
-const Item = require('../src/bagel.js');
+const Bagel = require('../src/bagel.js');
+const assertEquals = require('../test-framework.js');
 
-let input, exOutput, result;
+let input, exOutput;
 
 //----------------------------------------
 
@@ -9,14 +10,7 @@ console.log('Can we create an Item?')
 input = 'just a bagel';
 exOutput = 'just a bagel';
 
-let myItem = new Item(input)
-actOutput = myItem.name();
+let myBagel = new Bagel(input)
+actOutput = myBagel.name;
 
-if (actOutput === exOutput){
-    result = true;
-}
-else {
-    result = false;
-}
-
-console.log(result)
+console.log(assertEquals(actOutput, exOutput));

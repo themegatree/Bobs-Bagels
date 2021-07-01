@@ -1,62 +1,59 @@
 const Basket = require('../src/basket.js');
-const Item = require('../src/item.js');
+const Bagel = require('../src/bagel.js');
+const assertEquals = require('../test-framework.js');
 
-let input, exOutput, result, actOutput;
+let input, exOutput, actOutput;
 
 //----------------------------------------
 
 console.log('Can we add item to basket?');
 
-input = 'potato';
+input = 'just a bagel';
 cap = 10;
 exOutput = true;
 
-let myItem = new Item(input);
+let myBagel = new Bagel(input);
 
+console.log(myBagel)
 
 let myBasket = new Basket(cap);
 
 console.log(myBasket.itemList)
 
-if (myBasket.itemList.indexOf(myItem.name()) > -1) {
+myBasket.addItem(myBagel)
+
+if (myBasket.itemList.indexOf(myBagel) === -1) {
     actOutput = false;
 }
 else {
     actOutput = true;
 }
 
-if (actOutput === exOutput){
-    result = true;
-}
-else {
-    result = false;
-}
-
-console.log(result);
+console.log(assertEquals(actOutput, exOutput));
 
 //----------------------------------------
 
-/*console.log('Can we check if basket is full before adding item?');
+console.log('Can we remove an item?');
 
-input = 'potato';
-cap = 0;
-exOutput = true;
+input = 'just a bagel';
+cap = 5;
+exOutput = false;
 
-let myItem = new Item(input)
+let myBagel2 = new Bagel(input)
 
-let myBasket = new Basket(cap)
+let myBasket2 = new Basket(cap)
 
+myBasket2.addItem(myBagel)
 
-actOutput = myBasket.isFull();
+myBasket2.removeItem(myBagel2)
 
-
-if (actOutput === exOutput){
-    result = true;
+if (myBasket2.itemList.indexOf(myBagel2) === -1) {
+    actOutput = false;
 }
 else {
-    result = false;
+    actOutput = true;
 }
 
-console.log(result);*/
+console.log(assertEquals(actOutput, exOutput));
 
 //----------------------------------------
